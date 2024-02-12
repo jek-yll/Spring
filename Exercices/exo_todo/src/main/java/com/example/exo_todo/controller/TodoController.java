@@ -16,7 +16,6 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-
     @RequestMapping("/")
     public String home(){
         return "home";
