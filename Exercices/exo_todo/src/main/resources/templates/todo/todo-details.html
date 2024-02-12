@@ -10,7 +10,7 @@
         <hr>
         <p>A faire  : <span th:text="${todo.name}"></span></p>
         <p>Description  : <span th:text="${todo.description}"></span></p>
-        <p>Statu  :
+        <p>Status  :
             <span th:if="${todo.done}">Terminé</span>
             <span th:if="${!todo.done}">En cours</span>
         </p>

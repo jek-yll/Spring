@@ -17,11 +17,13 @@ public class TodoController {
     }
 
     @RequestMapping("/")
+    //@GetMapping
     public String home(){
         return "home";
     }
 
     @RequestMapping("/todo1")
+    //@GetMapping
     public String todoDetails(Model model){
         model.addAttribute("todo", todoService.getTodoById());
         return "todo/todo-details";
