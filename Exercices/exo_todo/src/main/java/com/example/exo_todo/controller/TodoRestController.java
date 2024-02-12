@@ -9,8 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("api/v1/base")
 public class TodoRestController {
+
+    @GetMapping("/todo")
+    public Todo todo(){
+        Todo todo = Todo.builder().name("Creer une todolist").description("Description de la tache : Creer une todolist").done(false).build();
+
+        return todo;
+    }
 
     @GetMapping("/todos")
     public List<Todo> todos(){

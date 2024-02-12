@@ -13,11 +13,10 @@ public class TodoController {
         return "home";
     }
 
-    @RequestMapping("/todo")
+    @RequestMapping("/todo1")
     public String todoDetails(Model model){
         Todo todo = Todo.builder().name("Faire une todolist").description("Description de la tache : Faire une todolist").done(false).build();
         model.addAttribute("todo", todo);
         return "todo/todo-details";
     }
-
 }
