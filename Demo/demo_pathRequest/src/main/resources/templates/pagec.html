@@ -6,6 +6,10 @@
     <span th:replace="~{pagea :: bootstrapImports}"></span>
 </head>
 <body>
-
+    <main>
+        <h2>Détail de mon lapin</h2>
+        <p>Nom : <span th:text="${myRabbit.name}"></span></p>
+        <p>Race : <span th:text="${myRabbit.breed}"></span></p>
+    </main>
 </body>
 </html>
