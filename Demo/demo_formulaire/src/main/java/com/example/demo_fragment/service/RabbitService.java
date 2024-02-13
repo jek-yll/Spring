@@ -46,6 +46,10 @@ public class RabbitService {
         // return rabbits.values().stream().filter(r -> r.getId().equals(id)).findFirst().orElse(null);
     }
 
+    public Rabbit getRabbitByName(String name){
+        return  rabbits.values().stream().filter(r -> r.getName().equals(name)).findFirst().orElse(null);
+    }
+
     public Boolean addRabbit(String name, String breed){
         Rabbit rabbit = Rabbit.builder()
                 .id(UUID.randomUUID())

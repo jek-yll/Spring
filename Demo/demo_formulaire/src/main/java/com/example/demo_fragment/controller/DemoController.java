@@ -5,10 +5,7 @@ import com.example.demo_fragment.service.RabbitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -52,5 +49,23 @@ public class DemoController {
         System.out.println(rabbit.getBreed());
         rabbitService.addRabbit(rabbit.getName(), rabbit.getBreed());
         return "redirect:/";
+    }
+    @GetMapping("/addRabbit")
+    public String submitRabbitV2(@RequestParam("name")String name, @RequestParam("breed")String breed ){
+        rabbitService.addRabbit(name, breed);
+        return "redirect:/";
+    }
+
+    @GetMapping("/look")
+    public String showRabbit(@RequestParam(value = "name", required = false)String name, Model model){
+        // System.out.println(name);
+        Rabbit rabbit = rabbitService.getRabbitByName(name);
+
+        if (rabbit != null){
+        model.addAttribute("myRabbit", rabbit);
+        return "pagec";
+        } else {
+            return "paged";
+        }
     }
 }

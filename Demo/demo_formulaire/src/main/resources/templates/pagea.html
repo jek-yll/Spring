@@ -16,6 +16,8 @@
         <nav>
             <a class="btn btn-outline-primary m-2" th:href="@{/pageb}">mes lapins</a>
             <a class="btn btn-outline-primary m-2" th:href="@{/add}">mon formulaire</a>
+            <a class="btn btn-outline-primary m-2" th:href="@{/look}">recherche sans params</a>
+            <a class="btn btn-outline-primary m-2" th:href="@{/look(name='bugs bunny')}">recherche bugs bunny</a>
         </nav>
         <img class="text-center" th:src="@{/img/rabbit.jpg}" alt="toto">
     </header>
