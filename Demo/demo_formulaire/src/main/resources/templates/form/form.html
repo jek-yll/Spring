@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <span th:replace="~{pagea :: bootstrapImports}"></span>
+</head>
+<body class="container-fluid">
+    <header>
+        <h1 class="text-center">Mon premier formulaire d'ajout de Lapin avec Spring</h1>
+        <a class="btn btn-outline-primary" th:href="@{/}">Home Page</a>
+    </header>
+    <main>
+        <form class="m-4 col-5" th:action="@{/add}" th:object="${rabbit}" method="post" >
+            <div class="">
+                <label class="form-label" for="name" >Name :</label>
+                <input class="form-control" type="text" id="name" th:field="*{name}">
+            </div>
+            <div class="">
+                <label class="form-label" for="breed" >Breed :</label>
+                <input class="form-control" type="text" id="breed" th:field="*{breed}">
+            </div>
+            <button class="btn btn-outline-success mt-2">Submit</button>
+        </form>
+    </main>
+</body>
+</html>
