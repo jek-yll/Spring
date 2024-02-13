@@ -14,7 +14,14 @@
 </header>
 <main>
     <a th:href="@{/detail/{id}(id=${rabbitId})}">Detail d'un labin</a>
-
+    <hr>
+    <ul>
+        <li th:each="r : ${rabbits}">
+            <a th:href="@{/detail/{id}(id=${r.id})}">
+                <span th:text="${r.name}"></span>
+            </a>
+        </li>
+    </ul>
 </main>
 </body>
 </html>

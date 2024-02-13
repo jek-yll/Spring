@@ -25,8 +25,7 @@ public class DemoController {
     @GetMapping("/pageb")
     public String pageb(Model model) {
         List<Rabbit> rabbits = rabbitService.getRabbits();
-        Rabbit rabbit = rabbits.get(0);
-        model.addAttribute("rabbitId", rabbit.getId());
+        model.addAttribute("rabbits", rabbits);
         return "pageb";
     }
 
