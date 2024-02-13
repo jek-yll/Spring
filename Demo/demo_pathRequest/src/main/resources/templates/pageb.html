@@ -5,23 +5,25 @@
     <title>Page B</title>
     <span th:replace="~{pagea :: bootstrapImports}"></span>
 </head>
-<body>
+<body class="container-fluid">
 <header>
-    <h1>Page B</h1>
+    <h1 class="text-center">Mes Lapins</h1>
     <nav>
-        <a th:href="@{/}">Home Page</a>
+        <a class="btn btn-outline-primary" th:href="@{/}">Home Page</a>
+        <a class="btn btn-outline-primary" th:href="@{/detail/{id}(id=${rabbitId})}">Detail d'un labin</a>
     </nav>
 </header>
 <main>
-    <a th:href="@{/detail/{id}(id=${rabbitId})}">Detail d'un labin</a>
     <hr>
-    <ul>
-        <li th:each="r : ${rabbits}">
-            <a th:href="@{/detail/{id}(id=${r.id})}">
-                <span th:text="${r.name}"></span>
-            </a>
-        </li>
-    </ul>
+    <div class="col-3">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-warning" th:each="r : ${rabbits}">
+                <a class="btn btn-outline-danger" th:href="@{/detail/{id}(id=${r.id})}">
+                    <span th:text="${r.name}"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </main>
 </body>
 </html>

@@ -5,12 +5,12 @@
     <title>Page C</title>
     <span th:replace="~{pagea :: bootstrapImports}"></span>
 </head>
-<body>
-    <main>
-        <h2>Détail de mon lapin</h2>
-        <p>Nom : <span th:text="${myRabbit.name}"></span></p>
-        <p>Race : <span th:text="${myRabbit.breed}"></span></p>
-        <a th:href="@{/pageb}">Retour</a>
-    </main>
-</body>
+    <body class="container-fluid">
+        <main>
+            <h2>Détail de mon lapin</h2>
+            <p>Nom : <span th:text="${myRabbit.name}"></span></p>
+            <p>Race : <span th:text="${myRabbit.breed}"></span></p>
+            <a th:href="@{/pageb}">Retour</a>
+        </main>
+    </body>
 </html>
