@@ -45,13 +45,6 @@ public class StudentControler {
         return "student/studentList";
     }
 
-    @GetMapping("/student/{studentId}")
-    public String showStudent(@PathVariable("studentId")UUID id, Model model){
-        Student student = studentService.getStudentById(id);
-        model.addAttribute("student", student);
-        return "student/studentDetails";
-    }
-
     @GetMapping("/search")
     public String searchStudent(@RequestParam(value = "lastname", required = false)String lastName, Model model){
         model.addAttribute("student", new Student());
@@ -64,4 +57,12 @@ public class StudentControler {
             return "redirect:/";
         }
     }
+
+    @GetMapping("/student/{studentId}")
+    public String showStudent(@PathVariable("studentId")UUID id, Model model){
+        Student student = studentService.getStudentById(id);
+        model.addAttribute("student", student);
+        return "student/studentDetails";
+    }
+
 }
