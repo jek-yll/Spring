@@ -33,10 +33,7 @@ public class StudentControler {
     }
 
     @GetMapping("/add")
-    public String addStudent(
-            @RequestParam(value = "id", required = false)UUID id ,
-            Model model)
-    {
+    public String addStudent(@RequestParam(value = "id", required = false)UUID id, Model model){
         if (id == null){
         model.addAttribute("student", new Student());
         } else {

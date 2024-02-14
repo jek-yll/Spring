@@ -27,7 +27,7 @@
                         <td>
                             <a th:href="@{/student/{id}(id=${s.id})}" class="btn btn-outline-primary">show more</a>
                             <a th:href="@{/student/delete/{id}(id=${s.id})}" class="btn btn-outline-danger">delete</a>
-                            <a th:href="@{/add/{mode}(mode='update')/{id}(id=${s.id})}" class="btn btn-outline-warning">update</a>
+                            <a th:href="@{/add/{id}(id=${s.id})}" class="btn btn-outline-warning">update</a>
                         </td>
                     </tr>
                 </tbody>
