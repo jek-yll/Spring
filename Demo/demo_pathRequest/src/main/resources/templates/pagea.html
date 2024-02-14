@@ -20,5 +20,9 @@
     </header>
     <main>
     </main>
+    <footer>
+        <p><span th:text="${@environment.getProperty('myapp.name')}"></span></p>
+        <p><span th:text="${@environment.getProperty('myapp.contact')}"></span></p>
+    </footer>
 </body>
 </html>

@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.UUID;
 
 public interface StudentService {
-
     Boolean addStudent(String firstName, String lastName, Integer age, String email);
     Student getStudentById(UUID id);
     List<Student> getStudents();
     List<Student> getStudentsByName(String lastName);
     List<Student> searchStudent(String name);
-
+    Boolean deleteStudent(UUID id);
+    Boolean updateStudent(UUID id, String firstName, String lastName, Integer age, String email );
 }

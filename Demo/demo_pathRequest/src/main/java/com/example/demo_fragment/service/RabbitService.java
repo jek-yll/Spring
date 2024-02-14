@@ -46,4 +46,27 @@ public class RabbitService {
         // return rabbits.values().stream().filter(r -> r.getId().equals(id)).findFirst().orElse(null);
     }
 
+    public boolean addRabbit(Rabbit rabbit) {
+//        Rabbit rabbitToAdd = Rabbit.builder()
+//                .id(UUID.randomUUID())
+//                .name(rabbit.getName())
+//                .breed(rabbit.getBreed())
+//                .build();
+        if (rabbit.getId() == null) {
+            rabbit.setId(UUID.randomUUID());
+            rabbits.put(rabbit.getId(), rabbit);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean deleteRabbit(UUID id){
+        rabbits.remove(getRabbitById(id));
+        return true;
+    }
+//    public boolean updateRabbit(UUID id, Rabbit rabbit){
+//        rabbits.replace()
+//    }
+
 }

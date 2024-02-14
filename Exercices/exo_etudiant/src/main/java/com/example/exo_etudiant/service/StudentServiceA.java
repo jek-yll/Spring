@@ -79,4 +79,30 @@ public class StudentServiceA implements StudentService{
 //                .filter(s -> s.getLastName().toLowerCase().contains(name.toLowerCase()) || s.getFirstName().toLowerCase().contains(name.toLowerCase()))
 //                .toList();
     }
+
+    @Override
+    public Boolean deleteStudent(UUID id) {
+        if (getStudentById(id) != null){
+        students.remove(id);
+        return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean updateStudent(UUID id, String firstName, String lastName, Integer age, String email) {
+        if(getStudentById(id) != null){
+            Student studentUpdate = Student.builder()
+                    .firstName(firstName)
+                    .lastName(lastName)
+                    .email(email)
+                    .age(age)
+                    .build();
+            students.replace(id, getStudentById(id), studentUpdate);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
