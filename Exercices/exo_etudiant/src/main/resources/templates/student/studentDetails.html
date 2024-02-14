@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Infos</title>
+    <span th:replace="~{home :: bootstrapImports}"></span>
 </head>
 <body>
-
+    <header>
+        <span th:replace="~{home :: navbar}"></span>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <h3 class="text-center">Infos</h3>
+            <div class="d-flex justify-content-center">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <b>Firstname : </b>
+                        <span class="ms-2" th:text="${student.firstName}"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Lastname : </b>
+                        <span class="ms-2" th:text="${student.lastName}"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Age : </b>
+                        <span class="ms-2" th:text="${student.age}"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Email : </b>
+                        <span class="ms-2" th:text="${student.email}"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <span th:replace="~{home :: footer}"></span>
 </body>
 </html>

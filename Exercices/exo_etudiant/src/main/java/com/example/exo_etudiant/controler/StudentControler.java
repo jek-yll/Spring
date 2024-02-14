@@ -4,7 +4,10 @@ import com.example.exo_etudiant.model.Student;
 import com.example.exo_etudiant.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class StudentControler {
@@ -23,6 +26,40 @@ public class StudentControler {
     @GetMapping("/add")
     public String addStudent(Model model){
         model.addAttribute("student", new Student());
-        return "add";
+        return "student/add";
     }
+
+    @PostMapping("/add")
+    public String registerStudent(@ModelAttribute("student")Student student){
+        studentService.addStudent(student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail());
+        return "redirect:/students";
+    }
+
+    @GetMapping("/students")
+    public String showStudents(Model model){
+        List<Student> students = studentService.getStudents();
+        model.addAttribute("students", students);
+        return "student/studentList";
+    }
+
+    @GetMapping("/student/{studentId}")
+    public String showStudent(@PathVariable("studentId")UUID id, Model model){
+        Student student = studentService.getStudentById(id);
+        model.addAttribute("student", student);
+        return "student/studentDetails";
+    }
+
+    @GetMapping("/search")
+    public String searchStudent(@RequestParam(value = "lastname", required = false)String lastName, Model model){
+        model.addAttribute("student", new Student());
+        List<Student> students = studentService.searchStudent(lastName);
+
+        if (!students.isEmpty()){
+            model.addAttribute("students", students);
+            return "student/studentList";
+        } else {
+            return "redirect:/";
+        }
+    }
+
 }

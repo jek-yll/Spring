@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceA implements StudentService{
@@ -42,6 +43,7 @@ public class StudentServiceA implements StudentService{
                     .id(UUID.randomUUID())
                     .firstName(firstName)
                     .lastName(lastName)
+                    .age(age)
                     .email(email)
                     .build();
             students.put(student.getId(), student);
@@ -64,5 +66,11 @@ public class StudentServiceA implements StudentService{
     @Override
     public List<Student> getStudentsByName(String lastName) {
         return students.values().stream().filter(s -> s.getLastName().equals(lastName)).toList();
+    }
+
+    public List<Student> searchStudent(String name) {
+        return students.values().stream()
+                .filter(s -> s.getLastName().startsWith(name) || s.getFirstName().startsWith(name))
+                .collect(Collectors.toList());
     }
 }

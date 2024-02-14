@@ -11,5 +11,6 @@ public interface StudentService {
     Student getStudentById(UUID id);
     List<Student> getStudents();
     List<Student> getStudentsByName(String lastName);
+    List<Student> searchStudent(String name);
 
 }
