@@ -31,8 +31,11 @@ public class StudentControler {
 
     @PostMapping("/add")
     public String registerStudent(@ModelAttribute("student")Student student){
-        studentService.addStudent(student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail());
+        if (studentService.addStudent(student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail())){
         return "redirect:/students";
+        } else {
+            return "redirect:/";
+        }
     }
 
     @GetMapping("/students")

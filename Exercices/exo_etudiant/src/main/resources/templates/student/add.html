@@ -16,19 +16,19 @@
                 <form th:action="@{/add}" th:object="${student}" method="post" class="col-6">
                     <div class="mb-2">
                         <label class="form-label" for="firstname"> Firstname :</label>
-                        <input class="form-control" type="text" id="firstname" th:field="*{firstName}">
+                        <input class="form-control" type="text" id="firstname" th:field="*{firstName}" required>
                     </div>
                     <div class="mb-2">
                         <label class="form-label" for="lastname"> Lastname :</label>
-                        <input class="form-control" type="text" id="lastname" th:field="*{lastName}">
+                        <input class="form-control" type="text" id="lastname" th:field="*{lastName}" required>
                     </div>
                     <div class="mb-2">
                         <label class="form-label" for="age"> Age :</label>
-                        <input class="form-control" type="number" id="age" th:field="*{age}">
+                        <input class="form-control" type="number" id="age" th:field="*{age}" required>
                     </div>
                     <div class="mb-2">
                         <label class="form-label" for="email"> Email :</label>
-                        <input class="form-control" type="email" id="email" th:field="*{email}">
+                        <input class="form-control" type="email" id="email" th:field="*{email}" required>
                     </div>
                     <div class="mt-3 d-flex justify-content-end">
                         <a class="btn btn-outline-danger" th:href="@{/}">Cancel</a>
