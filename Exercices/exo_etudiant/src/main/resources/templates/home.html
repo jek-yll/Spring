@@ -37,10 +37,14 @@
             </nav>
         </th:block>
     </header>
+    <main class="container">
+        <h2 th:text="${name}"></h2>
+        <h2 th:text="${contact}"></h2>
+    </main>
     <th:block th:fragment="footer">
         <footer class="container-fluid position-absolute bottom-0">
             <div class="container">
-                <p>© 2024 MY ACADEMY - All rights reserved.</p>
+                <p>© 2024 <span th:text="${@environment.getProperty('academy.name')}"></span> - All rights reserved - <span th:text="${@environment.getProperty('academy.contact')}"></span></p>
             </div>
         </footer>
     </th:block>

@@ -2,6 +2,9 @@ package com.example.exo_etudiant.controler;
 
 import com.example.exo_etudiant.model.Student;
 import com.example.exo_etudiant.service.StudentService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +16,19 @@ import java.util.UUID;
 public class StudentControler {
 
     private final StudentService studentService;
+    @Value("${academy.name}")
+    private String academyName;
+    @Value("${academy.contact}")
+    private String academyContact;
 
     public StudentControler(StudentService studentService) {
         this.studentService = studentService;
     }
 
     @GetMapping("/")
-    public String home(){
+    public String home(Model model){
+        model.addAttribute("name", academyName);
+        model.addAttribute("contact", academyContact);
         return "home";
     }
 
