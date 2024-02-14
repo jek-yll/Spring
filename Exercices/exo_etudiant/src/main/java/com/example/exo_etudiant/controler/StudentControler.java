@@ -61,5 +61,4 @@ public class StudentControler {
             return "redirect:/";
         }
     }
-
 }
