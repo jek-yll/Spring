@@ -73,7 +73,10 @@ public class StudentServiceA implements StudentService{
     @Override
     public List<Student> searchStudent(String name) {
         return students.values().stream()
-                .filter(s -> s.getLastName().startsWith(name) || s.getFirstName().startsWith(name))
+                .filter(s -> s.getLastName().toLowerCase().startsWith(name.toLowerCase()) || s.getFirstName().toLowerCase().startsWith(name.toLowerCase()))
                 .toList();
+//        return students.values().stream()
+//                .filter(s -> s.getLastName().toLowerCase().contains(name.toLowerCase()) || s.getFirstName().toLowerCase().contains(name.toLowerCase()))
+//                .toList();
     }
 }
