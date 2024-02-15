@@ -2,9 +2,11 @@ package com.example.exo_etudiant.controler;
 
 import com.example.exo_etudiant.model.Student;
 import com.example.exo_etudiant.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,16 +48,19 @@ public class StudentControler {
     }
 
     @PostMapping("/add")
-    public String registerStudent(@ModelAttribute("student")Student student){
-
-        if (student.getId() != null) {
-            studentService.updateStudent(student.getId(), student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail());
-            return "redirect:/students";
+    public String registerStudent(@Valid @ModelAttribute("student")Student student, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "student/add";
         } else {
-            if (studentService.addStudent(student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail())){
-            return "redirect:/students";
+            if (student.getId() != null) {
+                studentService.updateStudent(student.getId(), student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail());
+                return "redirect:/students";
             } else {
-                return "redirect:/";
+                if (studentService.addStudent(student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail())){
+                return "redirect:/students";
+                } else {
+                    return "redirect:/";
+                }
             }
         }
     }
