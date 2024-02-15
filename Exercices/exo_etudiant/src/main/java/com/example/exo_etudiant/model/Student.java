@@ -16,20 +16,22 @@ public class Student {
 
     private UUID id;
 
-    @NotBlank
-    @NotNull
+    //@NotBlank(message = "Invalid field")
+    @NotNull(message = "Invalid field")
+    @Pattern(regexp = "^[A-Za-z].{0,49}$", message = "Invalid field")
     private String firstName;
 
-    @NotBlank
-    @NotNull
+    //@NotBlank(message = "Invalid field")
+    @NotNull(message = "Invalid field")
+    @Pattern(regexp = "^[A-Za-z].{0,49}$", message = "Invalid field")
     private String lastName;
 
-    @NotNull
+    @NotNull(message = "Invalid field")
     @Min(value = 16, message = "Age must be at least 16")
     private Integer age;
 
-    @NotBlank
-    @NotNull
-    @Pattern(regexp = "^[\\w\\.-]+@[a-zA-Z\\d\\.-]+\\.[a-zA-Z]{2,}$", message = "Invalid email format")
+    //@NotBlank(message = "Invalid field")
+    @NotNull(message = "Invalid field")
+    @Pattern(regexp = "^[\\w\\.-]+@[a-zA-Z\\d\\.-]+\\.[a-zA-Z]{2,}$", message = "Invalid field")
     private String email;
 }
