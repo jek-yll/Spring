@@ -23,6 +23,9 @@ public class StudentRestController {
         return studentService.getStudentById(id);
     }
 
-//    @PostMapping("/add")
-//    private void addStudent()
+    @DeleteMapping("/student/{id}")
+    private Boolean deleteStudent(@PathVariable UUID id){
+        return studentService.deleteStudent(id);
+    }
+
 }
