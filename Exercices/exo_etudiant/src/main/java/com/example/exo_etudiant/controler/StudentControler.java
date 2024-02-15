@@ -30,9 +30,18 @@ public class StudentControler {
         return "home";
     }
 
+//    @GetMapping("/add")
+//    public String addStudent( Model model){
+//        model.addAttribute("student", new Student());
+//        return "student/add";
+//    }
     @GetMapping("/add")
-    public String addStudent( Model model){
-        model.addAttribute("student", new Student());
+    public String addStudent(@RequestParam(value = "id", required = false)UUID id,  Model model){
+        if (id != null){
+            model.addAttribute("student", studentService.getStudentById(id));
+        } else {
+            model.addAttribute("student", new Student());
+        }
         return "student/add";
     }
 

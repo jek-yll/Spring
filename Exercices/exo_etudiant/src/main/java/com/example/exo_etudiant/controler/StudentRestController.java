@@ -19,13 +19,22 @@ public class StudentRestController {
     public List<Student> getStudents() {return studentService.getStudents();}
 
     @GetMapping("/student/{id}")
-    private Student getStudent(@PathVariable UUID id){
+    public Student getStudent(@PathVariable UUID id){
         return studentService.getStudentById(id);
     }
 
     @DeleteMapping("/student/{id}")
-    private Boolean deleteStudent(@PathVariable UUID id){
+    public Boolean deleteStudent(@PathVariable UUID id){
         return studentService.deleteStudent(id);
     }
-
+    @PostMapping("/add")
+    public Student createStudent(@RequestBody Student student){
+        studentService.addStudent(student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail());
+        return student;
+    }
+    @PutMapping("/student/{id}")
+    public Student updateStudent(@PathVariable UUID id, @RequestBody Student studentUpdated){
+        studentService.updateStudent(id, studentUpdated.getFirstName(), studentUpdated.getLastName(), studentUpdated.getAge(), studentUpdated.getEmail());
+        return studentUpdated;
+    }
 }

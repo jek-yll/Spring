@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceA implements StudentService{
@@ -75,9 +74,6 @@ public class StudentServiceA implements StudentService{
         return students.values().stream()
                 .filter(s -> s.getLastName().toLowerCase().startsWith(name.toLowerCase()) || s.getFirstName().toLowerCase().startsWith(name.toLowerCase()))
                 .toList();
-//        return students.values().stream()
-//                .filter(s -> s.getLastName().toLowerCase().contains(name.toLowerCase()) || s.getFirstName().toLowerCase().contains(name.toLowerCase()))
-//                .toList();
     }
 
     @Override
