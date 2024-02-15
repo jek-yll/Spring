@@ -2,8 +2,6 @@ package com.example.exo_etudiant.controler;
 
 import com.example.exo_etudiant.model.Student;
 import com.example.exo_etudiant.service.StudentService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,22 +31,30 @@ public class StudentControler {
     }
 
     @GetMapping("/add")
-    public String addStudent(@RequestParam(value = "id", required = false)UUID id, Model model){
-        if (id == null){
+    public String addStudent( Model model){
         model.addAttribute("student", new Student());
-        } else {
-            model.addAttribute("student", studentService.getStudentById(id));
-        }
         return "student/add";
     }
 
     @PostMapping("/add")
     public String registerStudent(@ModelAttribute("student")Student student){
-        if (studentService.addStudent(student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail())){
-        return "redirect:/students";
+
+        if (student.getId() != null) {
+            studentService.updateStudent(student.getId(), student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail());
+            return "redirect:/students";
         } else {
-            return "redirect:/";
+            if (studentService.addStudent(student.getFirstName(), student.getLastName(), student.getAge(), student.getEmail())){
+            return "redirect:/students";
+            } else {
+                return "redirect:/";
+            }
         }
+    }
+
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable("id")UUID id, Model model){
+        model.addAttribute("student", studentService.getStudentById(id));
+        return "student/add";
     }
 
     @GetMapping("/students")
@@ -81,6 +87,6 @@ public class StudentControler {
     @GetMapping("/student/delete/{id}")
     private String deleteStudent(@PathVariable UUID id){
         studentService.deleteStudent(id);
-        return "student/studentList";
+        return "redirect:/students";
     }
 }

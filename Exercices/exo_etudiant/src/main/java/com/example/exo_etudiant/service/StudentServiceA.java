@@ -94,6 +94,7 @@ public class StudentServiceA implements StudentService{
     public Boolean updateStudent(UUID id, String firstName, String lastName, Integer age, String email) {
         if(getStudentById(id) != null){
             Student studentUpdate = Student.builder()
+                    .id(id)
                     .firstName(firstName)
                     .lastName(lastName)
                     .email(email)
