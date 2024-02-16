@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MyBlog</title>
+    <th:block th:fragment="bootstrapImports">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
+        <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    </th:block>
+</head>
+    <body>
+        <th:block th:fragment="navbar">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a th:href="@{/}" class="navbar-brand" >My Blog</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStudent" aria-controls="navbarStudent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarStudent">
+                            <ul class="navbar-nav mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/post/edit}">New article</a>
+                                </li>
+                            </ul>
+                            <form class="d-flex ms-auto" th:action="@{/search}" method="get">
+                                <input class="form-control" type="search" placeholder="Search" th:name="search">
+                                <button class="btn btn-outline-success mx-2" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </th:block>
+
+        <main class="container my-3">
+            <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 g-4">
+                <div th:each="p : ${posts}" class="col">
+                    <div  class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${p.title}"></h5>
+                            <h6 class="card-subtitle mb-2 text-muted" th:text="${p.author}"></h6>
+                            <p class="card-text" th:text="${p.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a th:href="@{/post/{id}(id=${p.id})}" class="btn btn-outline-secondary d-block ">Read</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <th:block th:fragment="footer">
+            <footer class="container-fluid bottom-0">
+                <div class="container">
+                    <p>© 2024 <span th:text="${@environment.getProperty('blog.name')}"></span> - All rights reserved - <span th:text="${@environment.getProperty('blog.contact')}"></span></p>
+                </div>
+            </footer>
+        </th:block>
+    </body>
+</html>

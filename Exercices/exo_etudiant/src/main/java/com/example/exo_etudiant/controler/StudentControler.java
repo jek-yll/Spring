@@ -16,8 +16,10 @@ import java.util.UUID;
 public class StudentControler {
 
     private final StudentService studentService;
+
     @Value("${academy.name}")
     private String academyName;
+
     @Value("${academy.contact}")
     private String academyContact;
 
