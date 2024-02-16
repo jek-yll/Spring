@@ -35,7 +35,7 @@ public class PostControler {
         return "blog/formPostPage";
     }
 
-    @PostMapping("/post")
+    @PostMapping("/post/edit")
     public String editPost(@Valid @ModelAttribute("post")Post post, BindingResult result){
         if (result.hasErrors()){
             return "blog/formPostPage";
@@ -56,7 +56,7 @@ public class PostControler {
         return "blog/postPage";
     }
 
-    @GetMapping("post/delete/{id}")
+    @GetMapping("post/delete/{id}") // http://localhost:8080/post/delete/*
     public String deletePost(@PathVariable UUID id){
         blogService.deletePost(id);
         return "redirect:/";
