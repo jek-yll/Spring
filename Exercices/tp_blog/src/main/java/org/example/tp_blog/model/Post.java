@@ -19,7 +19,7 @@ public class Post {
     private UUID id;
 
     @NotNull
-    @NotBlank
+    @Pattern(regexp = "^[A-Za-z].{0,49}$", message = "Invalid field")
     private String title;
 
     @NotNull
@@ -31,6 +31,6 @@ public class Post {
     private String content;
 
     @NotNull
-    @NotBlank
+    @Pattern(regexp = "^[A-Za-z\\d\\s].{0,49}$", message = "Invalid field")
     private String author;
 }
