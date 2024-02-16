@@ -92,6 +92,17 @@ public class BlogServiceImplA implements IBlogService{
 
     @Override
     public Boolean editPost(UUID id, Post updatedPost) {
-        return null;
+        Boolean result = false;
+        Post editedPost = getPostById(id);
+
+        if (editedPost != null){
+            editedPost.setTitle(updatedPost.getTitle());
+            editedPost.setAuthor(updatedPost.getAuthor());
+            editedPost.setDescription(updatedPost.getDescription());
+            editedPost.setContent(updatedPost.getContent());
+            result = true;
+        }
+
+        return result;
     }
 }

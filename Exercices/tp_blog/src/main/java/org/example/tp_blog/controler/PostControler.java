@@ -55,4 +55,10 @@ public class PostControler {
         model.addAttribute("post", blogService.getPostById(id));
         return "blog/postPage";
     }
+
+    @GetMapping("post/delete/{id}")
+    public String deletePost(@PathVariable UUID id){
+        blogService.deletePost(id);
+        return "redirect:/";
+    }
 }
