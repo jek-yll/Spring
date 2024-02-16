@@ -10,7 +10,7 @@
 
 <main class="container">
     <h2 class="text-center">Edit Post</h2>
-    <form th:action="@{/post}" th:object="${post}" method="post" class="my-3">
+    <form th:action="@{/post/edit}" th:object="${post}" method="post" class="my-3">
         <input type="hidden" th:field="*{id}">
         <div class="row">
             <div class="mb-3 col-6">
