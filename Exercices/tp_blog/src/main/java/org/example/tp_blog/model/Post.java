@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -23,14 +25,16 @@ public class Post {
     private String title;
 
     @NotNull
-    @NotBlank
+    @NotBlank(message = "Invalid field")
     private String description;
 
     @NotNull
-    @NotBlank
+    @NotBlank(message = "Invalid field")
     private String content;
 
     @NotNull
     @Pattern(regexp = "^[A-Za-z\\d\\s].{0,49}$", message = "Invalid field")
     private String author;
+
+    private List<Comment> comments = new ArrayList<>();
 }

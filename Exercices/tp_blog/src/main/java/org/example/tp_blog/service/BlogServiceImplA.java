@@ -1,8 +1,8 @@
 package org.example.tp_blog.service;
 
+import org.example.tp_blog.model.Comment;
 import org.example.tp_blog.model.Post;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +12,7 @@ import java.util.UUID;
 public class BlogServiceImplA implements IBlogService{
 
     private final Map<UUID, Post> posts;
+    private static Long commentId = 1L;
 
     public BlogServiceImplA() {
         this.posts = new HashMap<>();
@@ -23,6 +24,32 @@ public class BlogServiceImplA implements IBlogService{
                 .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ")
                 .author("Toto du 59")
                 .build();
+
+        Comment comentA1 = Comment.builder()
+                .id(commentId ++)
+                .author("Jean Michel")
+                .email("jm@gmail.com")
+                .content("Super article qui par de lorem ipsum, je reviendrai")
+                .idPost(postA.getId())
+                .build();
+
+        Comment comentA2 = Comment.builder()
+                .id(commentId ++)
+                .author("Michel Jean")
+                .email("mj@gmail.com")
+                .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
+                .idPost(postA.getId())
+                .build();
+
+        Comment comentA3 = Comment.builder()
+                .id(commentId ++)
+                .author("Franck Dupond")
+                .email("fd@gmail.com")
+                .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
+                .idPost(postA.getId())
+                .build();
+
+
         Post postB = Post.builder()
                 .id(UUID.randomUUID())
                 .title("Post B")
@@ -30,6 +57,8 @@ public class BlogServiceImplA implements IBlogService{
                 .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ")
                 .author("Toto du 62")
                 .build();
+
+
         Post postC = Post.builder()
                 .id(UUID.randomUUID())
                 .title("Post C")
@@ -37,6 +66,8 @@ public class BlogServiceImplA implements IBlogService{
                 .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ")
                 .author("Toto du 93")
                 .build();
+
+
         Post postD = Post.builder()
                 .id(UUID.randomUUID())
                 .title("Post D")
@@ -46,10 +77,14 @@ public class BlogServiceImplA implements IBlogService{
                 .build();
 
         posts.put(postA.getId(), postA);
+        postA.setComments(List.of(comentA1, comentA2, comentA3));
         posts.put(postB.getId(), postB);
         posts.put(postC.getId(), postC);
         posts.put(postD.getId(), postD);
+    }
 
+    public BlogServiceImplA(Map<UUID, Post> posts) {
+        this.posts = posts;
     }
 
     @Override

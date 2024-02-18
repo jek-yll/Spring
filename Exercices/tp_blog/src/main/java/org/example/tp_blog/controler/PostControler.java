@@ -35,7 +35,7 @@ public class PostControler {
         return "blog/formPostPage";
     }
 
-    @PostMapping("/post/edit")
+    @PostMapping("/post/edit") // http://localhost:8080/post/edit
     public String editPost(@Valid @ModelAttribute("post")Post post, BindingResult result){
         if (result.hasErrors()){
             return "blog/formPostPage";
