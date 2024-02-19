@@ -26,6 +26,17 @@ public class PersonRestController {
         return personService.findById(id);
     }
 
+//    @GetMapping("/add")
+//    public Person add(){
+//        Person person = Person.builder()
+//                .email("test@mail.test")
+//                .firstName("toto")
+//                .lastName("toto")
+//                .build();
+//        personService.save(person);
+//        return person;
+//    }
+
     @PostMapping("/add") // localhost:8080/add
     public Person addPerson(@RequestBody Person person){
         return personService.save(person);
