@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements IPersonService{
@@ -24,7 +25,12 @@ public class PersonServiceImpl implements IPersonService{
 
     @Override
     public Person findById(Long id) {
-        return personRepository.getReferenceById(id);
+        return personRepository.findByIdIs(id);
+    }
+
+    public Person findByIdOptionnal(Long id){
+        Optional<Person> result = personRepository.findById(id);
+        return result.orElse(null);
     }
 
     @Override
@@ -44,8 +50,7 @@ public class PersonServiceImpl implements IPersonService{
 
     @Override
     public Boolean delete(Long id) {
-        Person personDelete = personRepository.getReferenceById(id);
-        personRepository.delete(personDelete);
+        personRepository.deleteById(id);
         return true;
     }
 

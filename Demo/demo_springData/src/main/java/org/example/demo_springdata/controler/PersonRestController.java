@@ -20,8 +20,9 @@ public class PersonRestController {
 
     @GetMapping("/person/{id}") // localhost:8080/person/*
     public Person findById(@PathVariable Long id){
-        System.out.println(id);
-        System.out.println(personService.findById(id));
+        // System.out.println(id);
+        // System.out.println(personService.findById(id));
+        // return personService.findById(id);
         return personService.findById(id);
     }
 
