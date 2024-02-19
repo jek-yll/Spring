@@ -13,11 +13,11 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/blog")
-public class PostRestControler {
+public class PostRestController {
 
     private final IBlogService blogService;
 
-    public PostRestControler(IBlogService blogService){
+    public PostRestController(IBlogService blogService){
         this.blogService = blogService;
     }
 

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @Controller
-public class PostControler {
+public class PostController {
 
     private final IBlogService blogService;
 
-    public PostControler(IBlogService blogService){
+    public PostController(IBlogService blogService){
         this.blogService = blogService;
     }
 
