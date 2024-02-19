@@ -1,143 +1,86 @@
 package org.example.tp_blog.service;
 
+import org.example.tp_blog.dao.ICommentRepository;
+import org.example.tp_blog.dao.IPostRepository;
 import org.example.tp_blog.model.Comment;
 import org.example.tp_blog.model.Post;
 import org.springframework.stereotype.Service;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
 public class BlogServiceImplA implements IBlogService{
 
-    private final Map<UUID, Post> posts;
-    private static Long commentId = 1L;
+    private final ICommentRepository commentRepository;
+    private final IPostRepository postRepository;
 
-    public BlogServiceImplA() {
-        this.posts = new HashMap<>();
+    public BlogServiceImplA(ICommentRepository commentRepository, IPostRepository postRepository) {
 
-        Post postA = Post.builder()
-                .id(UUID.randomUUID())
-                .title("Post A")
-                .description("Lorem ipsum dolor sit" )
-                .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ")
-                .author("Toto du 59")
-                .build();
-
-        Comment comentA1 = Comment.builder()
-                .id(commentId ++)
-                .author("Jean Michel")
-                .email("jm@gmail.com")
-                .content("Super article qui par de lorem ipsum, je reviendrai")
-                .idPost(postA.getId())
-                .build();
-
-        Comment comentA2 = Comment.builder()
-                .id(commentId ++)
-                .author("Michel Jean")
-                .email("mj@gmail.com")
-                .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
-                .idPost(postA.getId())
-                .build();
-
-        Comment comentA3 = Comment.builder()
-                .id(commentId ++)
-                .author("Franck Dupond")
-                .email("fd@gmail.com")
-                .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
-                .idPost(postA.getId())
-                .build();
-
-
-        Post postB = Post.builder()
-                .id(UUID.randomUUID())
-                .title("Post B")
-                .description("Ipsum dolor sit" )
-                .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ")
-                .author("Toto du 62")
-                .build();
-
-
-        Post postC = Post.builder()
-                .id(UUID.randomUUID())
-                .title("Post C")
-                .description("Dolor sit" )
-                .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ")
-                .author("Toto du 93")
-                .build();
-
-
-        Post postD = Post.builder()
-                .id(UUID.randomUUID())
-                .title("Post D")
-                .description("Lorem ipsum" )
-                .content("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. ")
-                .author("Toto du 46")
-                .build();
-
-        posts.put(postA.getId(), postA);
-        postA.setComments(List.of(comentA1, comentA2, comentA3));
-        posts.put(postB.getId(), postB);
-        posts.put(postC.getId(), postC);
-        posts.put(postD.getId(), postD);
+        this.commentRepository = commentRepository;
+        this.postRepository = postRepository;
     }
 
-    public BlogServiceImplA(Map<UUID, Post> posts) {
-        this.posts = posts;
-    }
 
     @Override
     public Post addPost(Post post) {
-        if (post.getTitle() != null && post.getDescription() != null && post.getContent() != null && post.getAuthor() != null){
-            post.setId(UUID.randomUUID());
-            posts.put(post.getId(), post);
-            return post;
-        }
-        return null;
+        return postRepository.save(post);
     }
 
     @Override
     public Post getPostById(UUID id) {
-        return posts.get(id);
+        Optional<Post> result = postRepository.findById(id);
+        return result.orElse(null);
     }
 
     @Override
     public List<Post> getAllPosts() {
-        return posts.values().stream().toList();
-    }
-
-    @Override
-    public List<Post> searchPost(String search) {
-        return posts.values().stream()
-                .filter(post -> post.getAuthor().toLowerCase().startsWith(search.toLowerCase())
-                                || post.getTitle().toLowerCase().contains(search.toLowerCase()))
-                .toList();
+        return postRepository.findAll();
     }
 
     @Override
     public Boolean deletePost(UUID id) {
         Boolean result = false;
-        if (getPostById(id) != null){
-            posts.remove(id);
+        if (getPostById(id) == null){
+
+        } else {
+            postRepository.deleteById(id);
             result = true;
-        }
+        };
         return result;
     }
 
     @Override
     public Boolean editPost(UUID id, Post updatedPost) {
         Boolean result = false;
-        Post editedPost = getPostById(id);
+        if (getPostById(id) == null){
 
-        if (editedPost != null){
-            editedPost.setTitle(updatedPost.getTitle());
-            editedPost.setAuthor(updatedPost.getAuthor());
-            editedPost.setDescription(updatedPost.getDescription());
-            editedPost.setContent(updatedPost.getContent());
+        } else {
+            postRepository.save(updatedPost);
             result = true;
         }
-
         return result;
+    }
+
+    @Override
+    public Comment addComment(Comment comment) {
+        return commentRepository.save(comment);
+    }
+
+    @Override
+    public Boolean deleteComment(UUID id) {
+        postRepository.deleteById(id);
+        return true;
+    }
+
+    @Override
+    public List<Comment> getAllCommentsByPost(UUID id) {
+        Post post = getPostById(id);
+        return post.getComments();
+    }
+
+    @Override
+    public List<Post> searchPost(String search) {
+        return null;
     }
 }

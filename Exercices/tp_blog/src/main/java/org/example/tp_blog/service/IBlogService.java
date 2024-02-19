@@ -1,5 +1,6 @@
 package org.example.tp_blog.service;
 
+import org.example.tp_blog.model.Comment;
 import org.example.tp_blog.model.Post;
 
 import java.util.List;
@@ -13,5 +14,9 @@ public interface IBlogService {
     public List<Post> searchPost(String search);
     public Boolean deletePost(UUID id);
     public Boolean editPost(UUID id, Post updatedPost);
+    public Comment addComment(Comment comment);
+    public Boolean deleteComment(UUID id);
+    public List<Comment> getAllCommentsByPost(UUID id);
+
 
 }
