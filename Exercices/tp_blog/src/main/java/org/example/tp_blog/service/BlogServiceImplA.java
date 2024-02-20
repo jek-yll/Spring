@@ -27,7 +27,6 @@ public class BlogServiceImplA implements IBlogService{
         this.postMapper = postMapper;
     }
 
-
     @Override
     public Post addPost(Post post) {
         return postRepository.save(post);
@@ -77,12 +76,6 @@ public class BlogServiceImplA implements IBlogService{
     public Boolean deleteComment(UUID id) {
         postRepository.deleteById(id);
         return true;
-    }
-
-    @Override
-    public List<Comment> getAllCommentsByPost(UUID id) {
-        Post post = getPostById(id);
-        return null;
     }
 
     @Override

@@ -16,7 +16,4 @@ public interface IBlogService {
     public Boolean editPost(UUID id, Post updatedPost);
     public Comment addComment(Comment comment);
     public Boolean deleteComment(UUID id);
-    public List<Comment> getAllCommentsByPost(UUID id);
-
-
 }

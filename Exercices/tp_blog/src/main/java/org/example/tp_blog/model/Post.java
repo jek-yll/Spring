@@ -17,6 +17,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "post")
 @EqualsAndHashCode
+@ToString
 public class Post {
 
     @Id

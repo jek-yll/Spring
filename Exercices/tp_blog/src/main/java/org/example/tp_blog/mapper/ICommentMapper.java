@@ -14,7 +14,7 @@ import java.util.UUID;
 public interface ICommentMapper {
 
 
-    //@Mapping(source = "post", target = "postId", qualifiedByName = "convertPostToPostId")
+    @Mapping(source = "post", target = "postId", qualifiedByName = "convertPostToPostId")
     CommentDTO commentToCommentDto(Comment comment);
 
     Comment commentDtoToComment(CommentDTO commentDto);

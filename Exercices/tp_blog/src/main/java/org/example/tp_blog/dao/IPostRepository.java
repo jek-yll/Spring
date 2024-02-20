@@ -6,6 +6,5 @@ import org.example.tp_blog.model.Post;
 import java.util.UUID;
 
 public interface IPostRepository extends JpaRepository<Post, UUID> {
-
     Post findByIdIs(UUID id);
 }
