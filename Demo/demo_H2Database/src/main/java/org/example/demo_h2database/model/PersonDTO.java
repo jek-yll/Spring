@@ -16,5 +16,4 @@ public class PersonDTO {
     private String lastName;
     private LocalDate birthDate;
     private Integer age;
-
 }

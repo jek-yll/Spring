@@ -28,7 +28,7 @@
             <div class="col-md-8 offset-md-2 mt-5">
                 <div class="d-flex justify-content-between">
                     <h3>Comments</h3>
-                    <a class="btn btn-outline-primary">Add comment</a>
+                    <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addCommentModal">Add comment</a>
                 </div>
                 <hr>
                 <div th:each="comment : ${post.comments}">
@@ -41,6 +41,38 @@
                 </div>
             </div>
         </div>
+
+<!--    addCommentModal   -->
+
+    <div class="modal fade" id="addCommentModal" tabindex="-1" aria-labelledby="addCommentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCommentModalLabel">Add Comment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="commentForm" th:action="@{/addComment}" method="post" th:object="${comment}">
+                        <div class="mb-3">
+                            <label for="commentAuthor" class="form-label">Author</label>
+                            <input type="text" class="form-control" id="commentAuthor" name="author"  th:field="*{author}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentEmail" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="commentEmail" name="email" th:field="*{email}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentContent" class="form-label">Content</label>
+                            <textarea class="form-control" id="commentContent" name="content" rows="3" th:field="*{content}"></textarea>
+                        </div>
+                        <input type="text" name="postId" th:value="${post.id}" th:field="*{post}">
+                        <button type="submit" class="btn btn-outline-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </main>
 
 <span th:replace="~{homePage :: footer}"></span>

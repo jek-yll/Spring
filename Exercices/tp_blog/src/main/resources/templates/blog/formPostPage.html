@@ -9,7 +9,7 @@
 <span th:replace="~{homePage :: navbar}"></span>
 <main class="container">
 <h1 class="text-center">Edit post</h1>
-<form th:object="${post}" method="post">
+<form th:object="${post}" method="post" th:action="@{/post/edit}">
     <div class="row">
         <div class="mb-3 col-6">
             <label for="title" class="form-label">Title :</label>

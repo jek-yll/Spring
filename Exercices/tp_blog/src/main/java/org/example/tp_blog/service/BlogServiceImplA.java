@@ -2,6 +2,8 @@ package org.example.tp_blog.service;
 
 import org.example.tp_blog.dao.ICommentRepository;
 import org.example.tp_blog.dao.IPostRepository;
+import org.example.tp_blog.mapper.ICommentMapper;
+import org.example.tp_blog.mapper.IPostMapper;
 import org.example.tp_blog.model.Comment;
 import org.example.tp_blog.model.Post;
 import org.springframework.stereotype.Service;
@@ -14,11 +16,15 @@ public class BlogServiceImplA implements IBlogService{
 
     private final ICommentRepository commentRepository;
     private final IPostRepository postRepository;
+    private final ICommentMapper commentMapper;
+    private final IPostMapper postMapper;
 
-    public BlogServiceImplA(ICommentRepository commentRepository, IPostRepository postRepository) {
+    public BlogServiceImplA(ICommentRepository commentRepository, IPostRepository postRepository, ICommentMapper commentMapper, IPostMapper postMapper) {
 
         this.commentRepository = commentRepository;
         this.postRepository = postRepository;
+        this.commentMapper = commentMapper;
+        this.postMapper = postMapper;
     }
 
 
@@ -76,7 +82,7 @@ public class BlogServiceImplA implements IBlogService{
     @Override
     public List<Comment> getAllCommentsByPost(UUID id) {
         Post post = getPostById(id);
-        return post.getComments();
+        return null;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package org.example.tp_blog.controler;
 
 import jakarta.validation.Valid;
+import org.example.tp_blog.model.Comment;
 import org.example.tp_blog.model.Post;
 import org.example.tp_blog.service.IBlogService;
 import org.springframework.stereotype.Controller;
@@ -53,6 +54,7 @@ public class PostController {
     @GetMapping("post/{id}") // http://localhost:8080/post/*
     public String consultPost(@PathVariable("id")UUID id, Model model){
         model.addAttribute("post", blogService.getPostById(id));
+        model.addAttribute("comment", new Comment());
         return "blog/postPage";
     }
 
