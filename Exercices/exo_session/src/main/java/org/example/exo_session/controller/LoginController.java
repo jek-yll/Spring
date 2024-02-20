@@ -33,7 +33,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    private String login(@ModelAttribute("user")User user, Model model){
+    private String login(@ModelAttribute("user")User user){
 
         User userLog = User.builder()
                 .username(user.getUsername())
