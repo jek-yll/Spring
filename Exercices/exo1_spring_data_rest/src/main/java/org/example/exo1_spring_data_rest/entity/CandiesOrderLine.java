@@ -17,5 +17,4 @@ public class CandiesOrderLine {
     @ManyToOne
     @JoinColumn(name = "candies_order_id")
     private CandiesOrder candiesOrder;
-
 }
