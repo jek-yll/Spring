@@ -22,16 +22,16 @@ public class User {
     @Column(nullable = false)
     private UUID id;
     @NotNull
-    @Pattern(regexp = "^[A-Za-z]$", message = "Invalid field")
+    //@Pattern(regexp = "^[A-Za-z]$", message = "Invalid field")
     private String firstName;
     @NotNull
-    @Pattern(regexp = "^[A-Za-z]$", message = "Invalid field")
+    //@Pattern(regexp = "^[A-Za-z]$", message = "Invalid field")
     private String lastName;
     @NotNull
     @Pattern(regexp = "^[\\w.-]+@[a-zA-Z\\d.-]+\\.[a-zA-Z]{2,}$", message = "Invalid field")
     private String email;
     @NotNull
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{12,}$", message = "Invalid Field")
+    //@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{12,}$", message = "Invalid Field")
     private String password;
     private String imgUrl;
 
@@ -81,5 +81,17 @@ public class User {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
     }
 }
