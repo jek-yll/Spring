@@ -17,4 +17,9 @@ public class CandiesOrderLine {
     @ManyToOne
     @JoinColumn(name = "candies_order_id")
     private CandiesOrder candiesOrder;
+
+    public void setCandy(Candy candy){
+        this.candy = candy;
+        candy.setStock(candy.getStock()-quantity);
+    }
 }
