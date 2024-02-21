@@ -17,3 +17,8 @@ Vous êtes le développeur principal d'une boutique de bonbons magiques en ligne
     - Après avoir consommé les bonbons, les clients peuvent laisser des avis et des notes (de 1 à 5 étoiles).
     - Lire tous les avis sur un bonbon spécifique.
 
+
+
+### Exercice 2
+1. Utiliser les événements Spring Data pour effectuer les actions suivantes :
+-  Après la création : Envoyer un email de confirmation au client (simuler l'envoi par un simple message dans le journal de l'application).
