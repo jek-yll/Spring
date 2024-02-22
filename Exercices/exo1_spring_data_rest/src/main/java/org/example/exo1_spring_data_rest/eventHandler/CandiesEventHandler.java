@@ -11,7 +11,7 @@ public class CandiesEventHandler {
     @HandleAfterCreate
     public void handleCandiesOrder(CandiesOrder co){
         if (co.getStatus().equals(OrderStatus.NEW) ){
-        System.out.println("Votre commande : " + co.toString() + " a bien été créée");
+        System.out.println("Votre commande : " + co + " a bien été créée");
         }
     }
 }
