@@ -1,8 +1,10 @@
 package com.example.correction_spring_aspect.dto;
 
+import com.example.correction_spring_aspect.entity.Author;
+
 public class BookDTO {
     private String name;
-    private String author;
+    private Author author;
 
     public String getName() {
         return name;
@@ -12,11 +14,11 @@ public class BookDTO {
         this.name = name;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 }

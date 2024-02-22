@@ -1,20 +1,26 @@
 package com.example.correction_spring_aspect.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id")
+    private Author author;
 
-    private String author;
-
+    public Author getAuthor() {
+        return author;
+    }
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
     public long getId() {
         return id;
     }
@@ -31,11 +37,4 @@ public class Book {
         this.name = name;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 }
