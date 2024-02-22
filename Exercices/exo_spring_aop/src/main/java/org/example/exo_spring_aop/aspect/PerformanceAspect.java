@@ -4,6 +4,7 @@ package org.example.exo_spring_aop.aspect;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,7 +18,6 @@ public class PerformanceAspect {
     @After("performAnnotationPointCut()")
     public void performance() {
         long start = System.currentTimeMillis();
-
         System.out.println("Perf : " + (System.currentTimeMillis() - start) + " ms ");
     }
 
