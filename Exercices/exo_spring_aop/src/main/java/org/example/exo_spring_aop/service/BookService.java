@@ -1,5 +1,7 @@
 package org.example.exo_spring_aop.service;
 
+import org.example.exo_spring_aop.annotation.LoggerAnnotation;
+import org.example.exo_spring_aop.annotation.PerformAnnotation;
 import org.example.exo_spring_aop.entity.Book;
 import org.example.exo_spring_aop.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -16,22 +18,30 @@ public class BookService {
 
     }
 
+    @PerformAnnotation
+    @LoggerAnnotation
     public Book addBook(Book book){
         //System.out.println("method : addBook method");
         return bookRepository.save(book);
     }
 
+    @PerformAnnotation
+    @LoggerAnnotation
     public Boolean deleteBook(Long id){
         //System.out.println("method : deleteBook method");
         bookRepository.deleteById(id);
         return true;
     }
 
+    @PerformAnnotation
+    @LoggerAnnotation
     public Book getBook(Long id){
         //System.out.println("method : getBook method");
         return bookRepository.findByIdIs(id);
     }
 
+    @PerformAnnotation
+    @LoggerAnnotation
     public List<Book> getBooks(){
         //System.out.println("method : getBooks method");
         return bookRepository.findAll();

@@ -20,19 +20,21 @@ public class LoggingAspect {
     public void loggerAnnotationPointCut(){}
 
 
-    // @Around("execution(* org.example.exo_spring_aop.service.*.*(..)))")
+    //@Around("execution(* org.example.exo_spring_aop.service.*.*(..)))")
     @Around("loggerAnnotationPointCut()")
     public void log(ProceedingJoinPoint joinPoint) {
+
         try {
+
             System.out.println("Log : " +
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) +
                     " // Arg :" + Arrays.toString(joinPoint.getArgs())) ;
 
-            joinPoint.proceed();
+            Object retour = joinPoint.proceed();
 
             System.out.println("Log : " +
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) +
-                    " // Return :" + joinPoint.proceed().toString());
+                    " // Return :" + retour.toString());
 
         } catch (Throwable e){
             throw new RuntimeException(e);
