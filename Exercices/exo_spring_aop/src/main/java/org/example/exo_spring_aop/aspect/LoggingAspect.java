@@ -4,6 +4,8 @@ package org.example.exo_spring_aop.aspect;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.example.exo_spring_aop.annotation.PerformAnnotation;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -14,7 +16,12 @@ import java.util.Arrays;
 @Aspect
 public class LoggingAspect {
 
-    @Around("execution(* org.example.exo_spring_aop.service.*.*(..)))")
+    @Pointcut("@annotation(org.example.exo_spring_aop.annotation.LoggerAnnotation)")
+    public void loggerAnnotationPointCut(){}
+
+
+    // @Around("execution(* org.example.exo_spring_aop.service.*.*(..)))")
+    @Around("loggerAnnotationPointCut()")
     public void log(ProceedingJoinPoint joinPoint) {
         try {
             System.out.println("Log : " +
