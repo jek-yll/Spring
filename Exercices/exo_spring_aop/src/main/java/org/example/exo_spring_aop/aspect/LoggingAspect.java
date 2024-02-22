@@ -28,7 +28,7 @@ public class LoggingAspect {
 
             System.out.println("Log : " +
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) +
-                    " // Arg :" + Arrays.toString(joinPoint.getArgs())) ;
+                    " // Arg(s) :" + Arrays.toString(joinPoint.getArgs())) ;
 
             Object retour = joinPoint.proceed();
 

@@ -16,7 +16,9 @@ public class PerformanceAspect {
     // @After("execution(* org.example.exo_spring_aop.service.*.*(..)))")
     @After("performAnnotationPointCut()")
     public void performance() {
-        System.out.println("Perf : " + System.currentTimeMillis());
+        long start = System.currentTimeMillis();
+
+        System.out.println("Perf : " + (System.currentTimeMillis() - start) + " ms ");
     }
 
 }
