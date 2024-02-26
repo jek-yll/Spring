@@ -18,7 +18,7 @@ import java.util.List;
 public class NewsController {
 
     @GetMapping("{city}")
-    public Mono<List<News>> get(@PathVariable("city") String city) {
-        return Mono.just(Arrays.asList(News.builder().city(city).content(city +" News 1").build(), News.builder().city(city).content(city +" News 2").build()));
+    public Flux<List<News>> get(@PathVariable("city") String city) {
+        return Flux.just(Arrays.asList(News.builder().city(city).content(city +" News 1").build(), News.builder().city(city).content(city +" News 2").build()));
     }
 }

@@ -5,6 +5,7 @@ import com.example.weather_api.entity.WeatherForecast;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Random;
@@ -20,7 +21,7 @@ public class WeatherAPIController {
     }
 
     @GetMapping("{city}")
-    public Mono<WeatherForecast> get(String city) {
-        return Mono.just(WeatherForecast.builder().city(city).temperature(random.nextDouble()).build());
+    public Flux<WeatherForecast> get(String city) {
+        return Flux.just(WeatherForecast.builder().city(city).temperature(random.nextDouble()).build());
     }
 }
