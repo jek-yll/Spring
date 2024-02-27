@@ -38,13 +38,14 @@ public class PersonController {
         return personRepository.findAll();
     }
 
+    @GetMapping(path = "search/{search}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Person> search(@PathVariable("search") String search) {
+        //return personDAO.getAll();
+        return personRepository.customSearch(search);
+    }
+
     @DeleteMapping("{id}")
     public Mono delete(@PathVariable("id") int id) {
         return personDAO.delete(id);
-    }
-
-    @GetMapping(path = "search/{search}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Person> search(@PathVariable("search") String search){
-        return personRepository.customSearch(search);
     }
 }

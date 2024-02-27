@@ -22,7 +22,7 @@ public class PersonDAO {
         this.connectionFactory = connectionFactory;
         databaseClient = DatabaseClient.create(connectionFactory);
         Mono result = databaseClient
-                .sql("CREATE TABLE IF NOT EXISTS person(id int primary key auto_increment, firstname varchar(100), lastname varchar(100))")
+                .sql("CREATE TABLE IF NOT EXISTS person(id int primary key auto_increment, firstname varchar(100), lastname varchar(100)); CREATE TABLE IF NOT EXISTS address (id int primary key auto_increment, full_Address varchar(100), person_Id int);")
                 .then().doOnSuccess((Void) ->  {
                     System.out.println("Création de la table OK");
                 }).doOnError((Void) ->  {

@@ -12,7 +12,6 @@ public interface PersonRepository extends R2dbcRepository<Person, Long> {
 
     Flux<Person> searchAllByFirstnameContainingIgnoreCase(String firstname);
 
-    @Query("SELECT id, firstname, lastname FROM person WHERE firstname LIKE :search")
+    @Query("SELECT id, firstname, lastname from person where firstname like :search")
     Flux<Person> customSearch(String search);
-
 }
