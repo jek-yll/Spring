@@ -34,4 +34,14 @@ public class PersonController {
     public Mono delete(@PathVariable("id") int id){
         return personDAO.delete(id);
     }
+
+    @GetMapping("{id}")
+    public Mono getById(@PathVariable("id")int id){
+        return personDAO.getById(id);
+    }
+
+    @PutMapping("{id}")
+    public Mono update(@PathVariable("id")int id, @RequestBody Person person){
+        return personDAO.updateById(id, person.getFirstname(), person.getLastname());
+    }
 }

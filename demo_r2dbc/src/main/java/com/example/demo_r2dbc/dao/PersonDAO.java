@@ -55,4 +55,22 @@ public class PersonDAO {
     public Mono delete(int id){
         return databaseClient.sql("DELETE FROM person where id=:id").bind("id", id).then();
     }
+
+    public Mono getById(int id){
+        return databaseClient.sql("SELECT id, firstname, lastname FROM person WHERE id=:id").bind("id", id)
+                .fetch().one().map(m -> Person.builder()
+                        .id(Integer.valueOf(m.get("id").toString()))
+                        .firstname(m.get("firstname").toString())
+                        .lastname(m.get("lastname").toString())
+                        .build()
+                );
+    }
+
+    public Mono updateById(int id, String firstname, String lastname){
+        return databaseClient.sql("UPDATE person SET firstname=:firstname, lastname=:lastname WHERE id=:id")
+                .bind("id", id)
+                .bind("firstname", firstname)
+                .bind("lastname", lastname)
+                .then();
+    }
 }
