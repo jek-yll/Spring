@@ -29,4 +29,9 @@ public class PersonController {
     public Flux<Person> get() {
         return personDAO.getAll();
     }
+
+    @DeleteMapping("{id}")
+    public Mono delete(@PathVariable("id") int id){
+        return personDAO.delete(id);
+    }
 }

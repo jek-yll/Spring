@@ -51,4 +51,8 @@ public class PersonDAO {
                 .then();
         return result;
     }
+
+    public Mono delete(int id){
+        return databaseClient.sql("DELETE FROM person where id=:id").bind("id", id).then();
+    }
 }
