@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class WeatherForecast {
 
     @Id
-
     private String id;
     private String city;
     private double temperature;

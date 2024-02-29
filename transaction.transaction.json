@@ -1,0 +1,219 @@
+[{
+  "_id": {
+    "$oid": "65e04b38c04f1f3fa0237386"
+  },
+  "personId": "test",
+  "cryptoCurrencyName": "test",
+  "transactionDate": "2023-01-01 00-00",
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e04d38c04f1f3fa0237389"
+  },
+  "personId": "your_uuid_string_here",
+  "cryptoCurrencyName": "test",
+  "transactionDate": "2023-01-01 00-00",
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e04ec30b9bda2d9dc066c1"
+  },
+  "personId": "your_uuid_string_here",
+  "cryptoCurrencyName": "test",
+  "transactionDate": "2023-01-01T00:00",
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e04f224cd2fa52070f8c7f"
+  },
+  "personId": "your_uuid_string_here",
+  "cryptoCurrencyName": "test",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e054991368d226c8c21468"
+  },
+  "personId": {
+    "$binary": {
+      "base64": "mkbO7+gFpFZfgBvuyT+stA==",
+      "subType": "03"
+    }
+  },
+  "cryptoCurrencyName": "test",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e054d8f42f1a06d188b7aa"
+  },
+  "personId": {
+    "$binary": {
+      "base64": "30vlPLMX8M5rR20SXyK+rA==",
+      "subType": "03"
+    }
+  },
+  "cryptoCurrencyName": "test",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e055bd763f0f5418e0b644"
+  },
+  "personId": {
+    "$binary": {
+      "base64": "t0EqhYZl6cKkqqrKu7L8iw==",
+      "subType": "03"
+    }
+  },
+  "cryptoCurrencyName": "test",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e0900f8148015639aaa81f"
+  },
+  "idCustomer": {
+    "$binary": {
+      "base64": "5k2/sU/txMkL4aooRii+sA==",
+      "subType": "03"
+    }
+  },
+  "cryptoCurrencyName": "test",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e090168148015639aaa820"
+  },
+  "idCustomer": {
+    "$binary": {
+      "base64": "W0uhWWY7d1nQEyS12U3VlQ==",
+      "subType": "03"
+    }
+  },
+  "cryptoCurrencyName": "test2",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e0901c8148015639aaa821"
+  },
+  "idCustomer": {
+    "$binary": {
+      "base64": "BkwEOa24LuHJaOC1g43dkA==",
+      "subType": "03"
+    }
+  },
+  "cryptoCurrencyName": "test3",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e092796198c64aa836b5c4"
+  },
+  "idCustomer": "70624352-d8d7-4a07-a821-342b4da5f954",
+  "cryptoCurrencyName": "test3",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e0995307f9ad4d1c32e2f2"
+  },
+  "idCustomer": "70624352-d8d7-4a07-a821-342b4da5f954",
+  "cryptoCurrencyName": "test3",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e0995407f9ad4d1c32e2f3"
+  },
+  "idCustomer": "70624352-d8d7-4a07-a821-342b4da5f954",
+  "cryptoCurrencyName": "test3",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e0995907f9ad4d1c32e2f4"
+  },
+  "idCustomer": "70624352-d8d7-4a07-a821-342b4da5f954",
+  "cryptoCurrencyName": "test2",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+},
+{
+  "_id": {
+    "$oid": "65e0995907f9ad4d1c32e2f5"
+  },
+  "idCustomer": "70624352-d8d7-4a07-a821-342b4da5f954",
+  "cryptoCurrencyName": "test2",
+  "transactionDate": {
+    "$date": "2022-12-31T23:00:00.000Z"
+  },
+  "quantity": 1000,
+  "price": 125.25,
+  "_class": "org.example.cryptowallet_api.entity.Transaction"
+}]
